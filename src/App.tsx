@@ -455,6 +455,51 @@ Thank you! 🙏
         </div>
       </section>
 
+      {/* --- PREVIOUS YEAR QUESTIONS --- */}
+      <section className="py-24 bg-[#F5F5F5] px-6">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-[36px] font-[900] text-[#DC2626] text-center uppercase tracking-[3px] mb-16">
+            PREVIOUS YEAR QUESTIONS
+          </h2>
+
+          <div className="bg-[#0D1B2A] rounded-2xl p-8 md:p-12 border border-white/5 text-center">
+            <div className="bg-[#DC2626]/8 border-l-4 border-[#DC2626] p-4 rounded-r-lg mb-10 text-left">
+              <p className="text-[#EF4444] text-[13px] font-bold flex items-center gap-2">
+                <AlertCircle size={16} />
+                📚 Practice with last year's questions to prepare better for Tech Titans 2027!
+              </p>
+            </div>
+
+            <div className="mb-8">
+              <div className="text-5xl mb-6 text-[#EF4444]">📄</div>
+              <h3 className="text-white font-bold text-xl mb-2">TechTitans — Previous Year Questions</h3>
+              <p className="text-[#6e7681] text-sm">Computer Basics | Quiz + Rapid Fire</p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+              <button 
+                onClick={() => window.open('https://drive.google.com/file/d/1bsk7CA8zsaJU_w6RQF--zQbBJUXvJJvS/view?usp=drive_link', '_blank')}
+                className="w-full sm:w-auto px-8 py-3 border border-[#DC2626]/50 text-[#EF4444] font-bold rounded-lg hover:bg-[#DC2626]/10 transition-all flex items-center justify-center gap-2"
+              >
+                👁 View PDF
+              </button>
+              <button 
+                onClick={() => window.open('https://drive.google.com/uc?export=download&id=1bsk7CA8zsaJU_w6RQF--zQbBJUXvJJvS', '_blank')}
+                className="w-full sm:w-auto px-8 py-3 bg-[#DC2626] text-white font-bold rounded-lg hover:bg-[#B91C1C] transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(220,38,38,0.3)]"
+              >
+                ⬇ Download PDF
+              </button>
+            </div>
+
+            <div className="bg-[#DC2626]/5 border-l-2 border-[#DC2626]/40 p-3 rounded-r-lg inline-block text-left">
+              <p className="text-[#EF4444]/70 text-[12px]">
+                💡 Tip: These are for practice only. Actual questions will be different.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* --- EVENT RULES --- */}
       <section className="py-24 bg-[#F5F5F5] px-6">
         <div className="max-w-4xl mx-auto">
@@ -590,6 +635,63 @@ Thank you! 🙏
 
             <div className="bg-[#DC2626]/6 border-l-2 border-[#DC2626] p-4 rounded-r-lg">
               <p className="text-[#EF4444] text-[13px]">📋 Note: NNRG TechFest - TechTitan</p>
+            </div>
+          </div>
+
+          {/* Divider */}
+          <div className="flex items-center gap-4 my-12">
+            <div className="flex-1 h-[1px] bg-white/8" />
+            <div className="bg-[#1A1A2E] border border-[#DC2626]/30 text-[#DC2626]/80 text-[9px] tracking-[3px] px-[14px] py-[5px] rounded-[20px] uppercase font-bold">
+              OR | ALTERNATIVE
+            </div>
+            <div className="flex-1 h-[1px] bg-white/8" />
+          </div>
+
+          {/* Alternative Payment Card */}
+          <div className="bg-[#0D1B2A] rounded-2xl p-8 md:p-12 border border-white/5 relative">
+            <div className="absolute top-6 right-6 border border-[#DC2626]/50 text-[#DC2626] text-[9px] font-bold tracking-[2px] px-2 py-0.5 rounded uppercase">
+              ALTERNATIVE
+            </div>
+
+            <div className="bg-[#DC2626]/5 border-l-[3px] border-[#DC2626]/50 p-[10px] px-[14px] rounded-r-lg mb-10">
+              <p className="text-[#DC2626]/80 text-[11px] leading-relaxed">
+                ⚡ Use this UPI ID if the primary payment option has reached its daily transaction limit.
+              </p>
+            </div>
+
+            <div className="text-center mb-8">
+              <div className="text-[#6e7681] text-[9px] uppercase tracking-[3px] mb-6">SCAN QR CODE TO PAY</div>
+              <div className="inline-block bg-white p-2 rounded-lg mb-8">
+                <img 
+                  src="https://quickchart.io/qr?text=upi://pay?pa=6301523538-id6e@axl%26pn=Nithish%26am=300%26cu=INR%26tn=NNRG_TechFest_TechTitans&size=300" 
+                  alt="Alternative Payment QR Code"
+                  className="w-[260px] h-[260px]"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
+              <div className="space-y-1">
+                <div className="text-[10px] text-[#6e7681] uppercase tracking-wider">UPI ID</div>
+                <div className="text-[#EF4444] font-mono text-sm">6301523538-id6e@axl</div>
+              </div>
+              <div className="space-y-1">
+                <div className="text-[10px] text-[#6e7681] uppercase tracking-wider">PHONE</div>
+                <div className="text-[#EF4444] font-mono text-sm">6301523538</div>
+              </div>
+              <div className="space-y-1">
+                <div className="text-[10px] text-[#6e7681] uppercase tracking-wider">NAME</div>
+                <div className="text-white font-bold text-sm uppercase">NITHISH</div>
+              </div>
+              <div className="space-y-1">
+                <div className="text-[10px] text-[#6e7681] uppercase tracking-wider">AMOUNT</div>
+                <div className="text-[#22C55E] font-bold text-sm">₹300</div>
+              </div>
+            </div>
+
+            <div className="bg-[#DC2626]/3 border-l-2 border-[#DC2626]/50 p-4 rounded-r-lg">
+              <p className="text-[#DC2626]/70 text-[13px]">📋 Note: NNRG TechFest - TechTitan</p>
             </div>
           </div>
         </div>
