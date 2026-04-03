@@ -21,6 +21,13 @@ import {
   Plus
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { createClient } from '@supabase/supabase-js';
+
+// --- Supabase Client ---
+const supabase = createClient(
+  'https://dklzqwcgboolzisqngei.supabase.co',
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRrbHpxd2NnYm9vbHppc3FuZ2VpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjgxNDcxNzEsImV4cCI6MjA4MzcyMzE3MX0.TEqgRDBCHGJJJsOoLdUfXlKXmnR6m_J5woumAjOtw9E'
+);
 
 // --- Types ---
 interface FormData {
@@ -64,7 +71,25 @@ export default function App() {
 
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [registrationCount, setRegistrationCount] = useState(0);
   const formRef = useRef<HTMLDivElement>(null);
+
+  const fetchCount = async () => {
+    try {
+      const { count } = await supabase
+        .from('techtitan')
+        .select('*', { count: 'exact', head: true });
+      setRegistrationCount(count ?? 0);
+    } catch (error) {
+      console.error('Error fetching count:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchCount();
+    const interval = setInterval(fetchCount, 30000);
+    return () => clearInterval(interval);
+  }, []);
 
   const colleges = [
     "NNRG - Nalla Narasimha Reddy Education Society's Group of Institutions",
@@ -96,12 +121,33 @@ export default function App() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (validate()) {
       setIsSubmitting(true);
       
       const collegeName = formData.college === "Other" ? formData.otherCollege : formData.college;
+      
+      // Save to Supabase
+      const { error } = await supabase
+        .from('techtitan')
+        .insert([{
+          college: collegeName,
+          name: formData.leaderName,
+          roll_number: formData.leaderRoll,
+          department: formData.leaderDept,
+          year: formData.leaderYear,
+          mobile_no: formData.leaderMobile,
+          e_mail: formData.leaderEmail || null,
+          transaction_id: formData.transactionId
+        }]);
+
+      if (error) {
+        console.error('Supabase error:', error);
+      } else {
+        console.log('Saved successfully!');
+        fetchCount();
+      }
       
       const message = `━━━━━━━━━━━━━━━━━━━━━━━
 Hello! I have registered for *TECHTITAN*
@@ -273,6 +319,18 @@ Thank you! 🙏
           >
             ↓ Register Now →
           </motion.button>
+
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="inline-flex items-center gap-3 bg-blue-500/12 border border-blue-500/40 rounded-full px-6 py-2.5 backdrop-blur-md shadow-[0_0_30px_rgba(59,130,246,0.2)] mt-8"
+          >
+            <div className="w-2.5 h-2.5 bg-[#3B82F6] rounded-full shadow-[0_0_10px_rgba(59,130,246,0.8)] animate-pulse" />
+            <span className="text-white text-[13px] font-bold tracking-[3px] uppercase">
+              LIVE  •  <span className="text-[#3B82F6] text-[18px] font-black">{registrationCount}</span> REGISTERED
+            </span>
+            <span className="text-blue-500/70 text-[16px]">👥</span>
+          </motion.div>
 
           <motion.div 
             initial={{ opacity: 0, y: 10 }}
