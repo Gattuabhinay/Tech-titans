@@ -72,7 +72,28 @@ export default function App() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [registrationCount, setRegistrationCount] = useState(0);
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
   const formRef = useRef<HTMLDivElement>(null);
+
+  const calculateTimeLeft = () => {
+    const eventDate = new Date('2027-02-26T09:30:00').getTime();
+    const now = new Date().getTime();
+    const difference = eventDate - now;
+
+    if (difference > 0) {
+      setTimeLeft({
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60)
+      });
+    }
+  };
 
   const fetchCount = async () => {
     try {
@@ -87,8 +108,13 @@ export default function App() {
 
   useEffect(() => {
     fetchCount();
-    const interval = setInterval(fetchCount, 30000);
-    return () => clearInterval(interval);
+    calculateTimeLeft();
+    const countInterval = setInterval(fetchCount, 30000);
+    const timerInterval = setInterval(calculateTimeLeft, 1000);
+    return () => {
+      clearInterval(countInterval);
+      clearInterval(timerInterval);
+    };
   }, []);
 
   const colleges = [
@@ -309,6 +335,29 @@ Thank you! 🙏
               <CreditCard size={16} className="text-[#EF4444]" />
               <span>₹300/team</span>
             </div>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="flex gap-4 md:gap-6 mb-8 mt-4"
+          >
+            {[
+              { label: 'DD', value: timeLeft.days },
+              { label: 'HH', value: timeLeft.hours },
+              { label: 'MM', value: timeLeft.minutes },
+              { label: 'SS', value: timeLeft.seconds },
+            ].map((item, i) => (
+              <div key={i} className="flex flex-col items-center">
+                <div className="bg-white/5 border border-white/10 backdrop-blur-sm rounded-lg w-14 h-14 md:w-16 md:h-16 flex items-center justify-center mb-2">
+                  <span className="text-[#EF4444] text-xl md:text-2xl font-black font-mono">
+                    {String(item.value).padStart(2, '0')}
+                  </span>
+                </div>
+                <span className="text-white/30 text-[9px] font-bold tracking-[2px] uppercase">{item.label}</span>
+              </div>
+            ))}
           </motion.div>
 
           <motion.button
