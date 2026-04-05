@@ -527,13 +527,13 @@ Thank you! 🙏
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
               <button 
-                onClick={() => window.open('https://drive.google.com/file/d/1bsk7CA8zsaJU_w6RQF--zQbBJUXvJJvS/view?usp=drive_link', '_blank')}
+                onClick={() => window.open('https://drive.google.com/file/d/19gXStHzDnXhrh-ZdezWV2rKfP-ALrpNF/view?usp=drive_link', '_blank')}
                 className="w-full sm:w-auto px-8 py-3 border border-[#DC2626]/50 text-[#EF4444] font-bold rounded-lg hover:bg-[#DC2626]/10 transition-all flex items-center justify-center gap-2"
               >
                 👁 View PDF
               </button>
               <button 
-                onClick={() => window.open('https://drive.google.com/uc?export=download&id=1bsk7CA8zsaJU_w6RQF--zQbBJUXvJJvS', '_blank')}
+                onClick={() => window.open('https://drive.google.com/uc?export=download&id=19gXStHzDnXhrh-ZdezWV2rKfP-ALrpNF', '_blank')}
                 className="w-full sm:w-auto px-8 py-3 bg-[#DC2626] text-white font-bold rounded-lg hover:bg-[#B91C1C] transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(220,38,38,0.3)]"
               >
                 ⬇ Download PDF
