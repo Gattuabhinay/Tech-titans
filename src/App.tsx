@@ -341,7 +341,7 @@ Thank you! 🙏
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            className="flex gap-4 md:gap-6 mb-8 mt-4"
+            className="flex gap-4 md:gap-6 mb-6 mt-4"
           >
             {[
               { label: 'DD', value: timeLeft.days },
@@ -360,26 +360,26 @@ Thank you! 🙏
             ))}
           </motion.div>
 
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="inline-flex items-center gap-3 bg-[#DC2626]/10 border border-[#DC2626]/40 rounded-full px-6 py-2.5 backdrop-blur-md shadow-[0_0_30px_rgba(220,38,38,0.2)] mb-8"
+          >
+            <div className="w-2.5 h-2.5 bg-[#EF4444] rounded-full shadow-[0_0_10px_rgba(239,68,68,0.8)] animate-pulse" />
+            <span className="text-white text-[13px] font-bold tracking-[3px] uppercase">
+              LIVE  •  <span className="text-[#EF4444] text-[18px] font-black">{registrationCount}</span> REGISTERED
+            </span>
+            <span className="text-[#EF4444]/70 text-[16px]">👥</span>
+          </motion.div>
+
           <motion.button
             onClick={scrollToRegister}
             whileHover={{ scale: 1.02, backgroundColor: '#B91C1C' }}
             whileTap={{ scale: 0.98 }}
-            className="w-full max-w-[500px] mt-6 py-[18px] bg-[#DC2626] text-white font-bold text-[15px] rounded-xl shadow-[0_0_25px_rgba(220,38,38,0.5)] transition-all flex items-center justify-center gap-3"
+            className="w-full max-w-[500px] py-[18px] bg-[#DC2626] text-white font-bold text-[15px] rounded-xl shadow-[0_0_25px_rgba(220,38,38,0.5)] transition-all flex items-center justify-center gap-3"
           >
             ↓ Register Now →
           </motion.button>
-
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center gap-3 bg-blue-500/12 border border-blue-500/40 rounded-full px-6 py-2.5 backdrop-blur-md shadow-[0_0_30px_rgba(59,130,246,0.2)] mt-8"
-          >
-            <div className="w-2.5 h-2.5 bg-[#3B82F6] rounded-full shadow-[0_0_10px_rgba(59,130,246,0.8)] animate-pulse" />
-            <span className="text-white text-[13px] font-bold tracking-[3px] uppercase">
-              LIVE  •  <span className="text-[#3B82F6] text-[18px] font-black">{registrationCount}</span> REGISTERED
-            </span>
-            <span className="text-blue-500/70 text-[16px]">👥</span>
-          </motion.div>
 
           <motion.div 
             initial={{ opacity: 0, y: 10 }}
@@ -387,7 +387,7 @@ Thank you! 🙏
             transition={{ delay: 0.8, duration: 0.5 }}
             className="mt-12 text-white text-[26px] md:text-[36px] font-bold tracking-tight drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)]"
           >
-            Organizing by <span className="text-[#3B82F6] font-black drop-shadow-[0_0_20px_rgba(59,130,246,0.8)]">AI & ML Department</span>
+            Organizing by <span className="text-[#EF4444] font-black drop-shadow-[0_0_20px_rgba(239,68,68,0.8)]">AI & ML Department</span>
           </motion.div>
 
           <div className="absolute bottom-12 left-1/2 -translate-x-1/2 text-white/20 text-[10px] tracking-[4px] font-bold">
